@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity implements HasComponent<MainComponent> {
 
     @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+    Toolbar toolbar;
 
     private MainComponent mainComponent;
 
@@ -34,7 +34,7 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
         setContentView(R.layout.${layoutName});
         ButterKnife.bind(this);
         initializeInjector();
-        setSupportActionBar(mToolbar);
+        setSupportActionBar(toolbar);
         if (savedInstanceState == null) {
             addFragment(R.id.fragmentContainer, MainFragment.newInstance());
         }
