@@ -5,6 +5,7 @@
     <dependency mavenUrl="com.android.support:appcompat-v7:${supportLibraryVersion}"/>
     <dependency mavenUrl="com.android.support:support-annotations:${supportLibraryVersion}"/>
     <dependency mavenUrl="com.android.support:design:${supportLibraryVersion}"/>
+    <dependency mavenUrl="com.squareup.okhttp3:logging-interceptor:${interceptorVersion}"/>
     <dependency mavenUrl="com.squareup.retrofit2:retrofit:${retrofitVersion}"/>
     <dependency mavenUrl="com.squareup.retrofit2:converter-gson:${retrofitVersion}"/>
     <dependency mavenUrl="com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}"/>
@@ -12,6 +13,8 @@
     <dependency mavenUrl="io.reactivex:rxjava:${rxJavaVersion}"/>
     <dependency mavenUrl="io.reactivex:rxandroid:${rxAndroidVersion}"/>
     <dependency mavenUrl="com.google.dagger:dagger:${daggerVersion}"/>
+    <dependency mavenUrl="com.jakewharton.timber:timber:${timberVersion}"/>
+    <dependency mavenUrl="com.github.bumptech.glide:glide:${glideVersion}"/>
 
     <!-- Gradle -->
     <merge from="build.gradle.ftl"
@@ -37,17 +40,6 @@
     <!-- Drawable -->
     <copy from="res/drawable/background_splash.xml"
             to="${escapeXmlAttribute(resOut)}/drawable/background_splash.xml"/>
-
-    <copy from="res/drawable-hdpi/splash.png"
-            to="${escapeXmlAttribute(resOut)}/drawable-hdpi/splash.png"/>
-    <copy from="res/drawable-mdpi/splash.png"
-            to="${escapeXmlAttribute(resOut)}/drawable-mdpi/splash.png"/>
-    <copy from="res/drawable-xhdpi/splash.png"
-            to="${escapeXmlAttribute(resOut)}/drawable-xhdpi/splash.png"/>
-    <copy from="res/drawable-xxhdpi/splash.png"
-            to="${escapeXmlAttribute(resOut)}/drawable-xxhdpi/splash.png"/>
-    <copy from="res/drawable-xxxhdpi/splash.png"
-            to="${escapeXmlAttribute(resOut)}/drawable-xxxhdpi/splash.png"/>
 
     <!-- Layouts -->
     <copy from="res/layout/activity_main.xml"
@@ -86,10 +78,6 @@
                    to="${escapeXmlAttribute(srcOut)}/common/exception/DefaultErrorBundle.java"/>
     <instantiate from="src/app_package/common/exception/ErrorBundle.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/common/exception/ErrorBundle.java"/>
-    <instantiate from="src/app_package/common/exception/ErrorMessageFactory.java.ftl"
-                   to="${escapeXmlAttribute(srcOut)}/common/exception/ErrorMessageFactory.java"/>
-    <instantiate from="src/app_package/common/exception/NetworkConnectionException.java.ftl"
-                   to="${escapeXmlAttribute(srcOut)}/common/exception/NetworkConnectionException.java"/>
 
     <instantiate from="src/app_package/common/executor/JobExecutor.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/common/executor/JobExecutor.java"/>
@@ -104,10 +92,10 @@
                    to="${escapeXmlAttribute(srcOut)}/common/util/DialogFactory.java"/>
 
     <!-- DATA -->
-    <instantiate from="src/app_package/data/repository/local/FileManager.java.ftl"
-                   to="${escapeXmlAttribute(srcOut)}/data/repository/local/FileManager.java"/>
     <instantiate from="src/app_package/data/repository/remote/APIService.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/data/repository/remote/APIService.java"/>
+    <instantiate from="src/app_package/data/repository/remote/GsonAdapterFactory.java.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/data/repository/remote/GsonAdapterFactory.java"/>
 
     <!-- DOMAIN -->
     <instantiate from="src/app_package/domain/interactor/DefaultSubscriber.java.ftl"
@@ -143,21 +131,29 @@
                    to="${escapeXmlAttribute(srcOut)}/presentation/splash/SplashActivity.java"/>
 
     <!-- Unit tests -->
+    <instantiate from="test/app_package/AndroidApplicationTest.java.ftl"
+                   to="${escapeXmlAttribute(unitTestOut)}/AndroidApplicationTest.java"/>
+
     <!-- COMMON -->
     <instantiate from="test/app_package/common/di/modules/ActivityModuleTest.java.ftl"
                    to="${escapeXmlAttribute(unitTestOut)}/common/di/modules/ActivityModuleTest.java"/>
 
     <instantiate from="test/app_package/common/exception/DefaultErrorBundleTest.java.ftl"
                    to="${escapeXmlAttribute(unitTestOut)}/common/exception/DefaultErrorBundleTest.java"/>
-    <instantiate from="test/app_package/common/exception/ErrorMessageFactoryTest.java.ftl"
-                   to="${escapeXmlAttribute(unitTestOut)}/common/exception/ErrorMessageFactoryTest.java"/>
-    <instantiate from="test/app_package/common/exception/NetworkConnectionExceptionTest.java.ftl"
-                   to="${escapeXmlAttribute(unitTestOut)}/common/exception/NetworkConnectionExceptionTest.java"/>
+
+    <instantiate from="test/app_package/common/executor/UIThreadTest.java.ftl"
+                   to="${escapeXmlAttribute(unitTestOut)}/common/executor/UIThreadTest.java"/>
 
     <instantiate from="test/app_package/common/util/DialogFactoryTest.java.ftl"
                    to="${escapeXmlAttribute(unitTestOut)}/common/util/DialogFactoryTest.java"/>
 
     <!-- PRESENTATION -->
+    <instantiate from="test/app_package/presentation/navigation/NavigatorTest.java.ftl"
+                   to="${escapeXmlAttribute(unitTestOut)}/presentation/navigation/NavigatorTest.java"/>
+
+    <instantiate from="test/app_package/presentation/splash/SplashActivityTest.java.ftl"
+                   to="${escapeXmlAttribute(unitTestOut)}/presentation/splash/SplashActivityTest.java"/>
+
     <instantiate from="test/app_package/presentation/main/MainPresenterTest.java.ftl"
                    to="${escapeXmlAttribute(unitTestOut)}/presentation/main/MainPresenterTest.java"/>
 
