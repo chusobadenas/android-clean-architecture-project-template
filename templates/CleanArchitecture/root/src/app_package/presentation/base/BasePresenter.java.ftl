@@ -1,7 +1,6 @@
 package ${packageName}.presentation.base;
 
 import ${packageName}.common.exception.ErrorBundle;
-import ${packageName}.common.exception.ErrorMessageFactory;
 
 /**
  * Base class that implements the Presenter interface and provides a base implementation for
@@ -10,24 +9,24 @@ import ${packageName}.common.exception.ErrorMessageFactory;
  */
 public class BasePresenter<T extends MvpView> implements Presenter<T> {
 
-    private T mMvpView;
+    private T mvpView;
 
     @Override
     public void attachView(T mvpView) {
-        mMvpView = mvpView;
+        this.mvpView = mvpView;
     }
 
     @Override
     public void detachView() {
-        mMvpView = null;
+        mvpView = null;
     }
 
     private boolean isViewAttached() {
-        return mMvpView != null;
+        return mvpView != null;
     }
 
     public T getMvpView() {
-        return mMvpView;
+        return mvpView;
     }
 
     public void checkViewAttached() {
@@ -37,8 +36,7 @@ public class BasePresenter<T extends MvpView> implements Presenter<T> {
     }
 
     public void showErrorMessage(ErrorBundle errorBundle) {
-        String errorMessage = ErrorMessageFactory.create(mMvpView.context(), errorBundle.getException());
-        mMvpView.showError(errorMessage);
+        mvpView.showError(errorBundle.getErrorMessage());
     }
 
     private static class MvpViewNotAttachedException extends RuntimeException {
