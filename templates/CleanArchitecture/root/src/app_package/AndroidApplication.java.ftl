@@ -7,24 +7,33 @@ import ${packageName}.common.di.components.ApplicationComponent;
 import ${packageName}.common.di.components.DaggerApplicationComponent;
 import ${packageName}.common.di.modules.ApplicationModule;
 
+import timber.log.Timber;
+
 public class AndroidApplication extends Application implements HasComponent<ApplicationComponent> {
 
-    private ApplicationComponent mApplicationComponent;
+    private ApplicationComponent applicationComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
         initializeInjector();
+        initializeTimber();
     }
 
     @Override
     public ApplicationComponent getComponent() {
-        return mApplicationComponent;
+        return applicationComponent;
     }
 
     private void initializeInjector() {
-        mApplicationComponent = DaggerApplicationComponent.builder()
+        applicationComponent = DaggerApplicationComponent.builder()
             .applicationModule(new ApplicationModule(this))
             .build();
+    }
+
+    private void initializeTimber() {
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
     }
 }
