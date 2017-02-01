@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="MyAppTheme" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -54,20 +55,10 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
-    <style name="MyAppTheme.TextViewHeader">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">@dimen/header_margin</item>
-        <item name="android:textSize">@dimen/header_text_size</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:gravity">center</item>
-        <item name="android:background">@android:color/background_light</item>
-    </style>
-
     <style name="MyAppTheme.TextViewTitle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/header_margin</item>
+        <item name="android:layout_marginTop">18dp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
