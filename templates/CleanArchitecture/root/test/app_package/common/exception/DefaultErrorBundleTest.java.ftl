@@ -1,26 +1,47 @@
 package ${packageName}.common.exception;
 
+import android.content.Context;
+
+import ${packageName}.R;
+
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.mockito.Mockito.when;
 
 public class DefaultErrorBundleTest {
 
-    @Test
-    public void testCreationDefaultMessage() {
-        DefaultErrorBundle defaultErrorBundle = new DefaultErrorBundle(null);
+  @Mock
+  private Context context;
 
-        assertNull(defaultErrorBundle.getException());
-        assertEquals(defaultErrorBundle.getErrorMessage(), "Unknown error");
-    }
+  @Before
+  public void setUp() {
+    MockitoAnnotations.initMocks(this);
+    when(context.getString(R.string.exception_message_generic))
+        .thenReturn("There was an application error");
+    when(context.getString(R.string.btn_text_retry))
+        .thenReturn("Retry");
+  }
 
-    @Test
-    public void testCreationCustomMessage() {
-        Exception exception = new Exception("This is an error");
-        DefaultErrorBundle defaultErrorBundle = new DefaultErrorBundle(exception);
+  @Test
+  public void testCreationNullMessage() {
+    DefaultErrorBundle defaultErrorBundle = new DefaultErrorBundle(context, null, null);
 
-        assertEquals(defaultErrorBundle.getException(), exception);
-        assertEquals(defaultErrorBundle.getErrorMessage(), "This is an error");
-    }
+    assertNull(defaultErrorBundle.getException());
+    assertEquals(defaultErrorBundle.getErrorMessage(), "There was an application error");
+  }
+
+  @Test
+  public void testCreationCustomMessage() {
+    Exception exception = new Exception("Error");
+    DefaultErrorBundle defaultErrorBundle = new DefaultErrorBundle(context, exception, R.string
+        .btn_text_retry);
+
+    assertEquals(defaultErrorBundle.getException(), exception);
+    assertEquals(defaultErrorBundle.getErrorMessage(), "Retry");
+  }
 }

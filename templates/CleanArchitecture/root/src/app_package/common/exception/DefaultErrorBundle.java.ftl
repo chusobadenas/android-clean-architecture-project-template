@@ -1,32 +1,48 @@
 package ${packageName}.common.exception;
 
+import android.content.Context;
+
+import ${packageName}.R;
+
 /**
  * Wrapper around Exceptions used to manage default errors.
  */
 public class DefaultErrorBundle implements ErrorBundle {
 
-    private static final String DEFAULT_ERROR_MSG = "Unknown error";
+  private final Context context;
+  private Exception exception;
+  private final Integer errorMsgId;
 
-    private Exception mException;
+  /**
+   * Constructor
+   *
+   * @param context    application context
+   * @param throwable  the exception
+   * @param errorMsgId resource id of the error message
+   */
+  public DefaultErrorBundle(Context context, Throwable throwable, Integer errorMsgId) {
+    this.context = context;
+    this.errorMsgId = errorMsgId;
+    if (throwable instanceof Exception) {
+      this.exception = (Exception) throwable;
+    }
+  }
 
-    /**
-     * Constructor
-     *
-     * @param throwable the exception
-     */
-    public DefaultErrorBundle(Throwable throwable) {
-        if (throwable instanceof Exception) {
-            this.mException = (Exception) throwable;
-        }
+  @Override
+  public Exception getException() {
+    return exception;
+  }
+
+  @Override
+  public String getErrorMessage() {
+    String message;
+
+    if (errorMsgId == null) {
+      message = context.getString(R.string.exception_message_generic);
+    } else {
+      message = context.getString(errorMsgId);
     }
 
-    @Override
-    public Exception getException() {
-        return mException;
-    }
-
-    @Override
-    public String getErrorMessage() {
-        return mException == null ? DEFAULT_ERROR_MSG : mException.getMessage();
-    }
+    return message;
+  }
 }
