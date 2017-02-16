@@ -19,7 +19,7 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
     }
 
     /**
-     * Initializes the presenter by start retrieving the user list.
+     * Initializes the presenter.
      */
     void initialize() {
         checkViewAttached();
