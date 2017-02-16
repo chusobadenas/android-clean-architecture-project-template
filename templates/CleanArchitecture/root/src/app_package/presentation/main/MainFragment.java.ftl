@@ -25,16 +25,16 @@ import butterknife.Unbinder;
 public class MainFragment extends BaseFragment implements MainMvpView {
 
     @Inject
-    MainPresenter mMainPresenter;
+    MainPresenter mainPresenter;
 
     @BindView(R.id.rl_progress)
-    RelativeLayout mViewProgress;
+    RelativeLayout progressView;
     @BindView(R.id.rl_retry)
-    RelativeLayout mViewRetry;
+    RelativeLayout retryView;
     @BindView(R.id.text_message)
-    TextView mTextMessage;
+    TextView textMessage;
 
-    private Unbinder mUnbinder;
+    private Unbinder unbinder;
 
     /**
      * Creates a new instance of a MainFragment.
@@ -52,52 +52,51 @@ public class MainFragment extends BaseFragment implements MainMvpView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_main, container, false);
-        mUnbinder = ButterKnife.bind(this, fragmentView);
-        mMainPresenter.attachView(this);
-        setupView();
+        unbinder = ButterKnife.bind(this, fragmentView);
+        mainPresenter.attachView(this);
         return fragmentView;
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
         loadMessage();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mUnbinder.unbind();
+        unbinder.unbind();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mMainPresenter.detachView();
+        mainPresenter.detachView();
     }
 
     @Override
     public void showLoading() {
-        mTextMessage.setVisibility(View.GONE);
-        mViewProgress.setVisibility(View.VISIBLE);
+        textMessage.setVisibility(View.GONE);
+        progressView.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoading() {
-        mTextMessage.setVisibility(View.VISIBLE);
-        mViewProgress.setVisibility(View.GONE);
+        textMessage.setVisibility(View.VISIBLE);
+        progressView.setVisibility(View.GONE);
     }
 
     @Override
     public void showRetry() {
-        mTextMessage.setVisibility(View.GONE);
-        mViewRetry.setVisibility(View.VISIBLE);
+        textMessage.setVisibility(View.GONE);
+        retryView.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideRetry() {
-        mTextMessage.setVisibility(View.VISIBLE);
-        mViewRetry.setVisibility(View.GONE);
+        textMessage.setVisibility(View.VISIBLE);
+        retryView.setVisibility(View.GONE);
     }
 
     @Override
@@ -105,12 +104,8 @@ public class MainFragment extends BaseFragment implements MainMvpView {
         showToastMessage(message);
     }
 
-    @Override
-    public Context context() {
-        return getActivity();
-    }
-
-    private void setupView() {
+    @OnClick(R.id.bt_retry)
+    void onButtonRetryClick() {
         loadMessage();
     }
 
@@ -118,16 +113,16 @@ public class MainFragment extends BaseFragment implements MainMvpView {
      * Loads the message
      */
     private void loadMessage() {
-        mMainPresenter.initialize();
-    }
-
-    @OnClick(R.id.bt_retry)
-    void onButtonRetryClick() {
-        loadMessage();
+        mainPresenter.initialize();
     }
 
     @Override
     public void showMessage(String message) {
-        mTextMessage.setText(message);
+        textMessage.setText(message);
+    }
+
+    @Override
+    public Context context() {
+        return getActivity();
     }
 }
