@@ -3,8 +3,8 @@
     format="3"
     revision="1"
     name="Clean Architecture application"
-    minApi="16"
-    minBuildApi="16"
+    minApi="19"
+    minBuildApi="19"
     description="Creates a new Android application based on Clean Architecture">
 
     <category value="Activity"/>
