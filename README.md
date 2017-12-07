@@ -8,6 +8,7 @@ To import the template in Android Studio, follow the next steps:
 * Restart Android Studio
 * Now you can create a new project: _File -> New -> New Project..._ and choose **Clean Architecture application**
 * Replace the _.gitignore_ file with the _root/.gitignore_ template file
+* Replace the _gradle.properties_ file with the _root/gradle.properties_ template file
 * Replace the _gradle/wrapper/gradle-wrapper.properties_ file with the _root/gradle-wrapper.properties_ template file
 * Edit the _AndroidManifest.xml_ file and set the application theme to @**style/MyAppTheme**
 * Sync project
