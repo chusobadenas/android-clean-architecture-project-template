@@ -9,10 +9,10 @@ import ${packageName}.presentation.base.BaseActivity;
  */
 public class SplashActivity extends BaseActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        navigator.navigateToMain(this);
-        finish();
-    }
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      getNavigator().navigateToMain(this);
+      finish();
+  }
 }

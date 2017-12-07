@@ -19,36 +19,36 @@ import butterknife.ButterKnife;
  */
 public class MainActivity extends BaseActivity implements HasComponent<MainComponent> {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+  @BindView(R.id.toolbar)
+  Toolbar toolbar;
 
-    private MainComponent mainComponent;
+  private MainComponent mainComponent;
 
-    public static Intent getCallingIntent(Context context) {
-        return new Intent(context, MainActivity.class);
+  public static Intent getCallingIntent(Context context) {
+    return new Intent(context, MainActivity.class);
+  }
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.${layoutName});
+    ButterKnife.bind(this);
+    initializeInjector();
+    setSupportActionBar(toolbar);
+    if (savedInstanceState == null) {
+        addFragment(R.id.fragmentContainer, MainFragment.newInstance());
     }
+  }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.${layoutName});
-        ButterKnife.bind(this);
-        initializeInjector();
-        setSupportActionBar(toolbar);
-        if (savedInstanceState == null) {
-            addFragment(R.id.fragmentContainer, MainFragment.newInstance());
-        }
-    }
+  private void initializeInjector() {
+    mainComponent = DaggerMainComponent.builder()
+        .applicationComponent(getApplicationComponent())
+        .activityModule(getActivityModule())
+        .build();
+  }
 
-    private void initializeInjector() {
-        mainComponent = DaggerMainComponent.builder()
-                .applicationComponent(getApplicationComponent())
-                .activityModule(getActivityModule())
-                .build();
-    }
-
-    @Override
-    public MainComponent getComponent() {
-        return mainComponent;
-    }
+  @Override
+  public MainComponent getComponent() {
+    return mainComponent;
+  }
 }

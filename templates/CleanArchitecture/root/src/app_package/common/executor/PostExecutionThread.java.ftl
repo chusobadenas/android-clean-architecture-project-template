@@ -1,6 +1,6 @@
 package ${packageName}.common.executor;
 
-import rx.Scheduler;
+import io.reactivex.Scheduler;
 
 /**
  * Thread abstraction created to change the execution context from any thread to any other thread.
@@ -9,5 +9,5 @@ import rx.Scheduler;
  */
 public interface PostExecutionThread {
 
-    Scheduler getScheduler();
+  Scheduler getScheduler();
 }

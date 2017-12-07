@@ -10,8 +10,8 @@ import ${packageName}.R;
 public class DefaultErrorBundle implements ErrorBundle {
 
   private final Context context;
-  private Exception exception;
   private final Integer errorMsgId;
+  private Exception exception;
 
   /**
    * Constructor

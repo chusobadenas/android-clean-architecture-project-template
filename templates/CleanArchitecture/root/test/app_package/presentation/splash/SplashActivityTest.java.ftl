@@ -3,7 +3,6 @@ package ${packageName}.presentation.splash;
 import android.content.Intent;
 
 import ${packageName}.AndroidApplicationTest;
-import ${packageName}.BuildConfig;
 import ${packageName}.presentation.main.MainActivity;
 
 import org.junit.Test;
@@ -17,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(application = AndroidApplicationTest.class, constants = BuildConfig.class, sdk = 21)
+@Config(application = AndroidApplicationTest.class, sdk = 23)
 public class SplashActivityTest {
 
   @Test

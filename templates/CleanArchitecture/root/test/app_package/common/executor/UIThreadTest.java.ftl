@@ -5,10 +5,12 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
+import ${packageName}.AndroidApplicationTest;
+
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest = Config.NONE)
+@Config(application = AndroidApplicationTest.class, sdk = 23)
 public class UIThreadTest {
 
   @Test

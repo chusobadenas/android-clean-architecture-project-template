@@ -12,21 +12,21 @@ import static org.junit.Assert.assertNotNull;
 
 public class ActivityModuleTest {
 
-    private ActivityModule mActivityModule;
+    private ActivityModule activityModule;
 
     @Mock
-    private Activity mMockActivity;
+    private Activity activity;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        mActivityModule = new ActivityModule(mMockActivity);
+        activityModule = new ActivityModule(activity);
     }
 
     @Test
     public void testGetActivitySuccess() {
-        Activity activity = mActivityModule.activity();
-        assertNotNull(activity);
-        assertEquals(activity, mMockActivity);
+        Activity theActivity = activityModule.activity();
+        assertNotNull(theActivity);
+        assertEquals(theActivity, activity);
     }
 }

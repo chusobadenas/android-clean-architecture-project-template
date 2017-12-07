@@ -9,13 +9,17 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * APIService for retrieving data from the network using Retrofit.
  */
 public interface APIService {
+
+  int CONNECT_TIMEOUT = 15000;
+  int READ_TIMEOUT = 20000;
+  int WRITE_TIMEOUT = 20000;
 
   String API_BASE_URL = "PUT_YOUR_API_URL_HERE";
 
@@ -35,8 +39,9 @@ public interface APIService {
       }
 
       return clientBuilder
-          .readTimeout(10000, TimeUnit.MILLISECONDS)
-          .connectTimeout(15000, TimeUnit.MILLISECONDS)
+          .connectTimeout(CONNECT_TIMEOUT, TimeUnit.MILLISECONDS)
+          .readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS)
+          .writeTimeout(WRITE_TIMEOUT, TimeUnit.MILLISECONDS)
           .build();
       }
 
@@ -50,7 +55,7 @@ public interface APIService {
           .baseUrl(baseUrl)
           .client(createHttpClient())
           .addConverterFactory(GsonConverterFactory.create(gson))
-          .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+          .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
           .build();
       }
 

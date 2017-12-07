@@ -7,10 +7,10 @@ import ${packageName}.presentation.base.MvpView;
  */
 interface MainMvpView extends MvpView {
 
-    /**
-     * Shows a message in the view.
-     *
-     * @param message The message that will be shown.
-     */
-    void showMessage(String message);
+  /**
+   * Shows a message in the view.
+   *
+   * @param message The message that will be shown.
+   */
+  void showMessage(String message);
 }

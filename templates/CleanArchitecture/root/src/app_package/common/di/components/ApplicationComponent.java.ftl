@@ -2,10 +2,12 @@ package ${packageName}.common.di.components;
 
 import android.content.Context;
 
+import ${packageName}.common.di.ApplicationContext;
 import ${packageName}.common.di.modules.ApplicationModule;
 import ${packageName}.common.executor.PostExecutionThread;
 import ${packageName}.common.executor.ThreadExecutor;
 import ${packageName}.data.repository.remote.APIService;
+import ${packageName}.data.repository.MainDataRepository;
 import ${packageName}.presentation.base.BaseActivity;
 import ${packageName}.presentation.navigation.Navigator;
 
@@ -20,16 +22,18 @@ import dagger.Component;
 @Component(modules = ApplicationModule.class)
 public interface ApplicationComponent {
 
-    void inject(BaseActivity baseActivity);
+  void inject(BaseActivity baseActivity);
 
-    // Exposed to sub-graphs
-    Context context();
+  APIService apiService();
 
-    ThreadExecutor threadExecutor();
+  @ApplicationContext
+  Context context();
 
-    PostExecutionThread postExecutionThread();
+  MainDataRepository mainDataRepository();
 
-    APIService apiService();
+  Navigator navigator();
 
-    Navigator navigator();
+  PostExecutionThread postExecutionThread();
+
+  ThreadExecutor threadExecutor();
 }

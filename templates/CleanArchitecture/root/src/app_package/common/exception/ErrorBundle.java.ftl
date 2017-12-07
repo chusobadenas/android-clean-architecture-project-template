@@ -5,7 +5,7 @@ package ${packageName}.common.exception;
  */
 public interface ErrorBundle {
 
-    Exception getException();
+  Exception getException();
 
-    String getErrorMessage();
+  String getErrorMessage();
 }
