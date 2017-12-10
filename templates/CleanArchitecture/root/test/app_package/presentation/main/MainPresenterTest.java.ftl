@@ -3,6 +3,7 @@ package ${packageName}.presentation.main;
 import android.content.Context;
 
 import ${packageName}.R;
+import ${packageName}.data.entity.User;
 import ${packageName}.domain.interactor.DefaultSubscriber;
 import ${packageName}.domain.interactor.main.SayHello;
 
@@ -13,6 +14,8 @@ import org.mockito.MockitoAnnotations;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -54,6 +57,6 @@ public class MainPresenterTest {
     mainPresenter.initialize();
     verify(mvpView).hideRetry();
     verify(mvpView).showLoading();
-    verify(sayHello).execute(any(DefaultSubscriber.class), eq("Hello, world!"));
+    verify(sayHello).execute(any(DefaultSubscriber.class), any(User.class), eq("Hello, world!"));
   }
 }
