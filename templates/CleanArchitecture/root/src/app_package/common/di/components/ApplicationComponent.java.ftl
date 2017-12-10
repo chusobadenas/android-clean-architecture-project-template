@@ -7,7 +7,7 @@ import ${packageName}.common.di.modules.ApplicationModule;
 import ${packageName}.common.executor.PostExecutionThread;
 import ${packageName}.common.executor.ThreadExecutor;
 import ${packageName}.data.repository.remote.APIService;
-import ${packageName}.data.repository.MainDataRepository;
+import ${packageName}.data.repository.UserDataRepository;
 import ${packageName}.presentation.base.BaseActivity;
 import ${packageName}.presentation.navigation.Navigator;
 
@@ -29,7 +29,7 @@ public interface ApplicationComponent {
   @ApplicationContext
   Context context();
 
-  MainDataRepository mainDataRepository();
+  UserDataRepository userDataRepository();
 
   Navigator navigator();
 

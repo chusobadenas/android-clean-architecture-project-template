@@ -9,8 +9,8 @@ import ${packageName}.common.executor.PostExecutionThread;
 import ${packageName}.common.executor.ThreadExecutor;
 import ${packageName}.common.executor.UIThread;
 import ${packageName}.data.repository.remote.APIService;
-import ${packageName}.data.repository.MainDataRepository;
-import ${packageName}.domain.repository.MainRepository;
+import ${packageName}.data.repository.UserDataRepository;
+import ${packageName}.domain.repository.UserRepository;
 
 import javax.inject.Singleton;
 
@@ -61,7 +61,7 @@ public class ApplicationModule {
 
   @Provides
   @Singleton
-  MainRepository provideMainRepository(MainDataRepository mainDataRepository) {
-    return mainDataRepository;
+  UserRepository provideUserRepository(UserDataRepository userDataRepository) {
+    return userDataRepository;
   }
 }
