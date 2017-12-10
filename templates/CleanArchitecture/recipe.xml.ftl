@@ -106,12 +106,14 @@
                    to="${escapeXmlAttribute(srcOut)}/common/util/UIUtils.java"/>
 
     <!-- DATA -->
+    <instantiate from="src/app_package/data/entity/User.java.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/data/entity/User.java"/>
     <instantiate from="src/app_package/data/repository/remote/APIService.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/data/repository/remote/APIService.java"/>
     <instantiate from="src/app_package/data/repository/remote/GsonAdapterFactory.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/data/repository/remote/GsonAdapterFactory.java"/>
-    <instantiate from="src/app_package/data/repository/MainDataRepository.java.ftl"
-                   to="${escapeXmlAttribute(srcOut)}/data/repository/MainDataRepository.java"/>
+    <instantiate from="src/app_package/data/repository/UserDataRepository.java.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/data/repository/UserDataRepository.java"/>
 
     <!-- DOMAIN -->
     <instantiate from="src/app_package/domain/interactor/DefaultSubscriber.java.ftl"
@@ -120,8 +122,8 @@
                    to="${escapeXmlAttribute(srcOut)}/domain/interactor/UseCase.java"/>
     <instantiate from="src/app_package/domain/interactor/main/SayHello.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/domain/interactor/main/SayHello.java"/>
-    <instantiate from="src/app_package/domain/repository/MainRepository.java.ftl"
-                   to="${escapeXmlAttribute(srcOut)}/domain/repository/MainRepository.java"/>
+    <instantiate from="src/app_package/domain/repository/UserRepository.java.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/domain/repository/UserRepository.java"/>
 
     <!-- PRESENTATION -->
     <instantiate from="src/app_package/presentation/base/BaseActivity.java.ftl"
