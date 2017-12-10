@@ -21,7 +21,8 @@ public interface APIService {
   int READ_TIMEOUT = 20000;
   int WRITE_TIMEOUT = 20000;
 
-  String API_BASE_URL = "PUT_YOUR_API_URL_HERE";
+  // PUT YOUT API URL HERE
+  String API_BASE_URL = "https://jsonplaceholder.typicode.com/";
 
   /********
    * Helper class that sets up a new services
