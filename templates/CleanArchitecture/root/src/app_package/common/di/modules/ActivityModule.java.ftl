@@ -13,23 +13,23 @@ import dagger.Provides;
 @Module
 public class ActivityModule {
 
-    private final Activity mActivity;
+  private final Activity activity;
 
-    /**
-     * Constructor
-     *
-     * @param activity the activity
-     */
-    public ActivityModule(Activity activity) {
-        this.mActivity = activity;
-    }
+  /**
+   * Constructor
+   *
+   * @param activity the activity
+   */
+  public ActivityModule(Activity activity) {
+      this.activity = activity;
+  }
 
-    /**
-     * Expose the activity to dependents in the graph.
-     */
-    @Provides
-    @PerActivity
-    Activity activity() {
-        return mActivity;
-    }
+  /**
+   * Expose the activity to dependents in the graph.
+   */
+  @Provides
+  @PerActivity
+  Activity activity() {
+    return activity;
+  }
 }

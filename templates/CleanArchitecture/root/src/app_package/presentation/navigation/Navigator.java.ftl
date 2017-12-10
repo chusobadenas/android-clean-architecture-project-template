@@ -14,20 +14,20 @@ import javax.inject.Singleton;
 @Singleton
 public class Navigator {
 
-    @Inject
-    public Navigator() {
-        //empty
-    }
+  @Inject
+  public Navigator() {
+    // Empty constructor
+  }
 
-    /**
-     * Goes to the main screen.
-     *
-     * @param context A Context needed to open the destiny activity.
-     */
-    public void navigateToMain(Context context) {
-        if (context != null) {
-            Intent intentToLaunch = MainActivity.getCallingIntent(context);
-            context.startActivity(intentToLaunch);
-        }
+  /**
+   * Goes to the main screen.
+   *
+   * @param context A Context needed to open the destiny activity.
+   */
+  public void navigateToMain(Context context) {
+    if (context != null) {
+      Intent intentToLaunch = MainActivity.getCallingIntent(context);
+      context.startActivity(intentToLaunch);
     }
+  }
 }

@@ -3,11 +3,14 @@ package ${packageName}.common.di.modules;
 import android.content.Context;
 
 import ${packageName}.AndroidApplication;
+import ${packageName}.common.di.ApplicationContext;
 import ${packageName}.common.executor.JobExecutor;
 import ${packageName}.common.executor.PostExecutionThread;
 import ${packageName}.common.executor.ThreadExecutor;
 import ${packageName}.common.executor.UIThread;
 import ${packageName}.data.repository.remote.APIService;
+import ${packageName}.data.repository.UserDataRepository;
+import ${packageName}.domain.repository.UserRepository;
 
 import javax.inject.Singleton;
 
@@ -20,38 +23,45 @@ import dagger.Provides;
 @Module
 public class ApplicationModule {
 
-    private final AndroidApplication mApplication;
+  private final AndroidApplication application;
 
-    /**
-     * Constructor
-     *
-     * @param application the application
-     */
-    public ApplicationModule(AndroidApplication application) {
-        this.mApplication = application;
-    }
+  /**
+   * Constructor
+   *
+   * @param application the application
+   */
+  public ApplicationModule(AndroidApplication application) {
+      this.application = application;
+  }
 
-    @Provides
-    @Singleton
-    Context provideApplicationContext() {
-        return mApplication;
-    }
+  @Provides
+  @Singleton
+  APIService provideApiService() {
+      return APIService.Creator.newAPIService();
+  }
 
-    @Provides
-    @Singleton
-    ThreadExecutor provideThreadExecutor(JobExecutor jobExecutor) {
-        return jobExecutor;
-    }
+  @ApplicationContext
+  @Provides
+  @Singleton
+  Context provideApplicationContext() {
+      return application;
+  }
 
-    @Provides
-    @Singleton
-    PostExecutionThread providePostExecutionThread(UIThread uiThread) {
-        return uiThread;
-    }
+  @Provides
+  @Singleton
+  ThreadExecutor provideThreadExecutor(JobExecutor jobExecutor) {
+      return jobExecutor;
+  }
 
-    @Provides
-    @Singleton
-    APIService provideApiService() {
-        return APIService.Creator.newAPIService();
-    }
+  @Provides
+  @Singleton
+  PostExecutionThread providePostExecutionThread(UIThread uiThread) {
+      return uiThread;
+  }
+
+  @Provides
+  @Singleton
+  UserRepository provideUserRepository(UserDataRepository userDataRepository) {
+    return userDataRepository;
+  }
 }

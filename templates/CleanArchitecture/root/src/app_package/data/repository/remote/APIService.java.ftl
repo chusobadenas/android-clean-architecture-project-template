@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -17,7 +17,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public interface APIService {
 
-  String API_BASE_URL = "PUT_YOUR_API_URL_HERE";
+  int CONNECT_TIMEOUT = 15000;
+  int READ_TIMEOUT = 20000;
+  int WRITE_TIMEOUT = 20000;
+
+  // PUT YOUT API URL HERE
+  String API_BASE_URL = "https://jsonplaceholder.typicode.com/";
 
   /********
    * Helper class that sets up a new services
@@ -35,8 +40,9 @@ public interface APIService {
       }
 
       return clientBuilder
-          .readTimeout(10000, TimeUnit.MILLISECONDS)
-          .connectTimeout(15000, TimeUnit.MILLISECONDS)
+          .connectTimeout(CONNECT_TIMEOUT, TimeUnit.MILLISECONDS)
+          .readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS)
+          .writeTimeout(WRITE_TIMEOUT, TimeUnit.MILLISECONDS)
           .build();
       }
 
@@ -50,7 +56,7 @@ public interface APIService {
           .baseUrl(baseUrl)
           .client(createHttpClient())
           .addConverterFactory(GsonConverterFactory.create(gson))
-          .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+          .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
           .build();
       }
 

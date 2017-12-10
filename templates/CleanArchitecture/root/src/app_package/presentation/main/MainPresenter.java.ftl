@@ -2,10 +2,14 @@ package ${packageName}.presentation.main;
 
 import ${packageName}.R;
 import ${packageName}.common.di.PerActivity;
+import ${packageName}.data.entity.User;
+import ${packageName}.domain.interactor.DefaultSubscriber;
+import ${packageName}.domain.interactor.UseCase;
 import ${packageName}.presentation.base.BasePresenter;
 import ${packageName}.presentation.base.Presenter;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  * {@link Presenter} that controls communication between views and models of the presentation layer.
@@ -13,33 +17,56 @@ import javax.inject.Inject;
 @PerActivity
 public class MainPresenter extends BasePresenter<MainMvpView> {
 
-    @Inject
-    public MainPresenter() {
-        // Empty constructor
+  private final UseCase sayHelloUseCase;
+
+  @Inject
+  public MainPresenter(@Named("sayHello") UseCase sayHelloUseCase) {
+    this.sayHelloUseCase = sayHelloUseCase;
+  }
+
+  @Override
+  public void detachView() {
+    super.detachView();
+    sayHelloUseCase.unsubscribe();
+  }
+
+  /**
+   * Initializes the presenter.
+   */
+  void initialize() {
+    checkViewAttached();
+    loadMessage();
+  }
+
+  /**
+   * Loads the message.
+   */
+  private void loadMessage() {
+    MainMvpView mvpView = getMvpView();
+    mvpView.hideRetry();
+    mvpView.showLoading();
+    getMessage();
+  }
+
+  private void getMessage() {
+    User user = User.create("John", "Doe");
+    String message = getMvpView().context().getString(R.string.sample_text);
+    sayHelloUseCase.execute(new SayHelloSubscriber(), user, message);
+  }
+
+  private final class SayHelloSubscriber extends DefaultSubscriber<String> {
+
+    @Override
+    public void onError(Throwable throwable) {
+      getMvpView().hideLoading();
+      showErrorMessage(throwable, "Error getting the message", null);
+      getMvpView().showRetry();
     }
 
-    /**
-     * Initializes the presenter.
-     */
-    void initialize() {
-        checkViewAttached();
-        loadMessage();
+    @Override
+    public void onNext(String message) {
+      getMvpView().hideLoading();
+      getMvpView().showMessage(message);
     }
-
-    /**
-     * Loads the message.
-     */
-    private void loadMessage() {
-        MainMvpView mvpView = getMvpView();
-        mvpView.hideRetry();
-        mvpView.showLoading();
-        getMessage();
-    }
-
-    private void getMessage() {
-        MainMvpView mvpView = getMvpView();
-        String message = mvpView.context().getString(R.string.sample_text);
-        mvpView.hideLoading();
-        mvpView.showMessage(message);
-    }
+  }
 }

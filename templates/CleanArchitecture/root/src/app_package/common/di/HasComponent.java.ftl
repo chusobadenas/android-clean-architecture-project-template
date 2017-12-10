@@ -5,5 +5,5 @@ package ${packageName}.common.di;
  */
 public interface HasComponent<C> {
 
-    C getComponent();
+  C getComponent();
 }

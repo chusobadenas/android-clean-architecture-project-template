@@ -11,29 +11,29 @@ import timber.log.Timber;
 
 public class AndroidApplication extends Application implements HasComponent<ApplicationComponent> {
 
-    private ApplicationComponent applicationComponent;
+  private ApplicationComponent applicationComponent;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        initializeInjector();
-        initializeTimber();
-    }
+  @Override
+  public void onCreate() {
+      super.onCreate();
+      initializeInjector();
+      initializeTimber();
+  }
 
-    @Override
-    public ApplicationComponent getComponent() {
-        return applicationComponent;
-    }
+  @Override
+  public ApplicationComponent getComponent() {
+      return applicationComponent;
+  }
 
-    private void initializeInjector() {
-        applicationComponent = DaggerApplicationComponent.builder()
-            .applicationModule(new ApplicationModule(this))
-            .build();
-    }
+  private void initializeInjector() {
+      applicationComponent = DaggerApplicationComponent.builder()
+          .applicationModule(new ApplicationModule(this))
+          .build();
+  }
 
-    private void initializeTimber() {
-        if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
-        }
-    }
+  private void initializeTimber() {
+      if (BuildConfig.DEBUG) {
+          Timber.plant(new Timber.DebugTree());
+      }
+  }
 }
