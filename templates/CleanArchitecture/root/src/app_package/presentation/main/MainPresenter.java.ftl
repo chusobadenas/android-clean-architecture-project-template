@@ -2,6 +2,7 @@ package ${packageName}.presentation.main;
 
 import ${packageName}.R;
 import ${packageName}.common.di.PerActivity;
+import ${packageName}.data.entity.User;
 import ${packageName}.domain.interactor.DefaultSubscriber;
 import ${packageName}.domain.interactor.UseCase;
 import ${packageName}.presentation.base.BasePresenter;
@@ -48,8 +49,9 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
   }
 
   private void getMessage() {
+    User user = User.create("John", "Doe");
     String message = getMvpView().context().getString(R.string.sample_text);
-    sayHelloUseCase.execute(new SayHelloSubscriber(), message);
+    sayHelloUseCase.execute(new SayHelloSubscriber(), user, message);
   }
 
   private final class SayHelloSubscriber extends DefaultSubscriber<String> {

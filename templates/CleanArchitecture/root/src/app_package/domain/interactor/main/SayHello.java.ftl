@@ -2,8 +2,9 @@ package ${packageName}.domain.interactor.main;
 
 import ${packageName}.common.executor.PostExecutionThread;
 import ${packageName}.common.executor.ThreadExecutor;
+import ${packageName}.data.entity.User;
 import ${packageName}.domain.interactor.UseCase;
-import ${packageName}.domain.repository.MainRepository;
+import ${packageName}.domain.repository.UserRepository;
 
 import javax.inject.Inject;
 
@@ -14,18 +15,19 @@ import io.reactivex.Observable;
  */
 public class SayHello extends UseCase {
 
-  private final MainRepository mainRepository;
+  private final UserRepository userRepository;
 
   @Inject
-  public SayHello(MainRepository mainRepository, ThreadExecutor threadExecutor,
+  public SayHello(UserRepository userRepository, ThreadExecutor threadExecutor,
                         PostExecutionThread postExecutionThread) {
     super(threadExecutor, postExecutionThread);
-    this.mainRepository = mainRepository;
+    this.userRepository = userRepository;
   }
 
   @Override
   public Observable buildUseCaseObservable(Object... param) {
-    String str = (String) param[0];
-    return mainRepository.saySomething(str);
+    User user = (User) param[0];
+    String str = (String) param[1];
+    return userRepository.saySomething(user, str);
   }
 }
