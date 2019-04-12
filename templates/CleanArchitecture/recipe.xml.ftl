@@ -2,13 +2,20 @@
 <recipe>
     <!-- Dependencies -->
     <dependency mavenUrl="com.android.support:appcompat-v7:${supportLibraryVersion}"/>
+    <dependency mavenUrl="com.android.support:animated-vector-drawable:${supportLibraryVersion}"/>
     <dependency mavenUrl="com.android.support:cardview-v7:${supportLibraryVersion}"/>
+    <dependency mavenUrl="com.android.support:design:${supportLibraryVersion}"/>
+    <dependency mavenUrl="com.android.support:percent:${supportLibraryVersion}"/>
     <dependency mavenUrl="com.android.support:recyclerview-v7:${supportLibraryVersion}"/>
     <dependency mavenUrl="com.android.support:support-annotations:${supportLibraryVersion}"/>
-    <dependency mavenUrl="com.android.support:design:${supportLibraryVersion}"/>
+    <dependency mavenUrl="com.android.support:support-media-compat:${supportLibraryVersion}"/>
+    <dependency mavenUrl="com.android.support:support-v4:${supportLibraryVersion}"/>
     <dependency mavenUrl="com.github.bumptech.glide:glide:${glideVersion}"/>
     <dependency mavenUrl="com.google.android.gms:play-services-gcm:${playServicesVersion}"/>
+    <dependency mavenUrl="com.google.code.gson:gson:${gsonVersion}"/>
     <dependency mavenUrl="com.google.dagger:dagger:${daggerVersion}"/>
+    <dependency mavenUrl="com.google.dagger:dagger-android:${daggerVersion}"/>
+    <dependency mavenUrl="com.google.dagger:dagger-android-support:${daggerVersion}"/>
     <dependency mavenUrl="com.jakewharton:butterknife:${butterKnifeVersion}"/>
     <dependency mavenUrl="com.jakewharton.timber:timber:${timberVersion}"/>
     <dependency mavenUrl="com.squareup.okhttp3:logging-interceptor:${interceptorVersion}"/>
@@ -17,6 +24,23 @@
     <dependency mavenUrl="com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"/>
     <dependency mavenUrl="io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"/>
     <dependency mavenUrl="io.reactivex.rxjava2:rxjava:${rxJavaVersion}"/>
+    <dependency mavenUrl="org.easymock:easymock:${easyMockVersion}" gradleConfiguration="testImplementation"/>
+    <dependency mavenUrl="org.mockito:mockito-core:${mockitoVersion}" gradleConfiguration="testImplementation"/>
+    <dependency mavenUrl="org.powermock:powermock-api-mockito:${powerMockVersion}" gradleConfiguration="testImplementation"/>
+    <dependency mavenUrl="org.powermock:powermock-api-easymock:${powerMockVersion}" gradleConfiguration="testImplementation"/>
+    <dependency mavenUrl="org.powermock:powermock-module-junit4:${powerMockVersion}" gradleConfiguration="testImplementation"/>
+    <dependency mavenUrl="org.robolectric:robolectric:${roboElectricVersion}" gradleConfiguration="testImplementation"/>
+    <dependency mavenUrl="org.robolectric:shadows-support-v4:${roboElectricShadowsVersion}" gradleConfiguration="testImplementation"/>
+    <dependency mavenUrl="com.google.auto.value:auto-value:${autoValueVersion}" gradleConfiguration="annotationProcessor"/>
+    <dependency mavenUrl="com.ryanharter.auto.value:auto-value-gson:${autoValueGsonVersion}" gradleConfiguration="annotationProcessor"/>
+    <dependency mavenUrl="com.jakewharton:butterknife-compiler:${butterKnifeVersion}" gradleConfiguration="annotationProcessor"/>
+    <dependency mavenUrl="com.google.dagger:dagger-android-processor:${daggerVersion}" gradleConfiguration="annotationProcessor"/>
+    <dependency mavenUrl="com.google.dagger:dagger-compiler:${daggerVersion}" gradleConfiguration="annotationProcessor"/>
+    <dependency mavenUrl="com.github.bumptech.glide:compiler:${glideVersion}" gradleConfiguration="annotationProcessor"/>
+
+    <dependency mavenUrl="com.jakewharton.auto.value:auto-value-annotations:${autoValueAnnotationsVersion}" gradleConfiguration="compileOnly"/>
+    <dependency mavenUrl="com.ryanharter.auto.value:auto-value-gson:${autoValueGsonVersion}" gradleConfiguration="compileOnly"/>
+    <dependency mavenUrl="javax.annotation:jsr250-api:${jsr250Version}" gradleConfiguration="compileOnly"/>
 
     <!-- Gradle -->
     <merge from="build.gradle.ftl"
@@ -45,7 +69,7 @@
 
     <!-- Layouts -->
     <copy from="res/layout/activity_main.xml"
-            to="${escapeXmlAttribute(resOut)}/layout/${layoutName}.xml"/>
+            to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml"/>
     <copy from="res/layout/fragment_main.xml"
                 to="${escapeXmlAttribute(resOut)}/layout/fragment_main.xml"/>
     <copy from="res/layout/list_item_single_choice.xml"
@@ -142,7 +166,7 @@
                        to="${escapeXmlAttribute(srcOut)}/presentation/base/Presenter.java"/>
 
     <instantiate from="src/app_package/presentation/main/MainActivity.java.ftl"
-                   to="${escapeXmlAttribute(srcOut)}/presentation/main/${activityClass}.java"/>
+                   to="${escapeXmlAttribute(srcOut)}/presentation/main/${activityName}.java"/>
     <instantiate from="src/app_package/presentation/main/MainFragment.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/presentation/main/MainFragment.java"/>
     <instantiate from="src/app_package/presentation/main/MainMvpView.java.ftl"

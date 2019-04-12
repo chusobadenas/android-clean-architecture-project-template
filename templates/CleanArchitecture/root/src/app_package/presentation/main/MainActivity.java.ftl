@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.${layoutName});
+    setContentView(R.layout.${activityLayoutName});
     ButterKnife.bind(this);
     initializeInjector();
     setSupportActionBar(toolbar);
