@@ -5,7 +5,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
-        android:name="${packageName}.AndroidApplication">
+        android:name="${packageName}.AndroidApplication"
+        android:theme="@style/MyAppTheme">
         <activity
             android:name="${packageName}.presentation.splash.SplashActivity"
             android:label="@string/app_name"
@@ -16,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="${packageName}.presentation.main.${activityClass}"
+            android:name="${packageName}.presentation.main.${activityName}"
             android:label="@string/app_name"
             android:theme="@style/MyAppTheme.NoActionBar">
         </activity>

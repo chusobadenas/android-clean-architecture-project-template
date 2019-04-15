@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <template
-    format="3"
+    format="4"
     revision="1"
-    name="Clean Architecture application"
+    name="Android Clean Architecture application"
     minApi="19"
     minBuildApi="19"
     description="Creates a new Android application based on Clean Architecture">
@@ -11,31 +11,22 @@
     <formfactor value="Mobile"/>
 
     <parameter
-        id="activityClass"
+        id="activityName"
         name="Activity Name"
         type="string"
         constraints="class|unique|nonempty"
-        suggest="${layoutToActivity(layoutName)}"
+        suggest="${layoutToActivity(activityLayoutName)}"
         default="MainActivity"
-        help="The name of the activity class to create"/>
+        help="The name of the activity to create"/>
 
     <parameter
-        id="layoutName"
-        name="Layout Name"
+        id="activityLayoutName"
+        name="Activity Layout Name"
         type="string"
         constraints="layout|unique|nonempty"
-        suggest="${activityToLayout(activityClass)}"
+        suggest="${activityToLayout(activityName)}"
         default="activity_main"
-        help="The name of the layout to create for the activity"/>
-
-    <parameter
-        id="activityTitle"
-        name="Title"
-        type="string"
-        constraints="nonempty"
-        default="MainActivity"
-        suggest="${activityClass}"
-        help="The name of the activity. For launcher activities, the application title."/>
+        help="The name of the layout to create for the activity" />
 
     <parameter
         id="packageName"

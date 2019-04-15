@@ -2,27 +2,43 @@ package ${packageName}.common.di.components;
 
 import android.content.Context;
 
+import ${packageName}.AndroidApplication;
 import ${packageName}.common.di.ApplicationContext;
+import ${packageName}.common.di.modules.ActivityBindingsModule;
 import ${packageName}.common.di.modules.ApplicationModule;
+import ${packageName}.common.di.modules.FragmentBindingsModule;
 import ${packageName}.common.executor.PostExecutionThread;
 import ${packageName}.common.executor.ThreadExecutor;
 import ${packageName}.data.repository.remote.APIService;
 import ${packageName}.data.repository.UserDataRepository;
-import ${packageName}.presentation.base.BaseActivity;
 import ${packageName}.presentation.navigation.Navigator;
+import dagger.BindsInstance;
+import dagger.Component;
+import dagger.android.AndroidInjectionModule;
+import dagger.android.AndroidInjector;
 
 import javax.inject.Singleton;
-
-import dagger.Component;
 
 /**
  * A component whose lifetime is the life of the application.
  */
 @Singleton
-@Component(modules = ApplicationModule.class)
-public interface ApplicationComponent {
+@Component(modules = {
+    AndroidInjectionModule.class,
+    ActivityBindingsModule.class,
+    FragmentBindingsModule.class,
+    ApplicationModule.class
+})
+public interface ApplicationComponent extends AndroidInjector<AndroidApplication> {
 
-  void inject(BaseActivity baseActivity);
+  @Component.Builder
+  interface Builder {
+
+    ApplicationComponent build();
+
+    @BindsInstance
+    Builder application(AndroidApplication application);
+  }
 
   APIService apiService();
 

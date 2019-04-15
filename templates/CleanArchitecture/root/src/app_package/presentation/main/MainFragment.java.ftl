@@ -1,22 +1,22 @@
 package ${packageName}.presentation.main;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import ${packageName}.R;
-import ${packageName}.common.di.components.MainComponent;
-import ${packageName}.presentation.base.BaseMvpFragment;
-
-import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+
+import ${packageName}.R;
+import ${packageName}.presentation.base.BaseMvpFragment;
+
+import javax.inject.Inject;
 
 /**
  * Main fragment
@@ -43,13 +43,7 @@ public class MainFragment extends BaseMvpFragment implements MainMvpView {
   }
 
   @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    getComponent(MainComponent.class).inject(this);
-  }
-
-  @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View fragmentView = inflater.inflate(R.layout.fragment_main, container, false);
     unbinder = ButterKnife.bind(this, fragmentView);
     mainPresenter.attachView(this);

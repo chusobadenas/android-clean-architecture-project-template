@@ -4,14 +4,14 @@ The following project is a template for building a Clean-Architecture-based Andr
 
 To import the template in Android Studio, follow the next steps:
 
-* Copy the folder _templates/CleanArchitecture_ in _${ANDROID_STUDIO_HOME}/plugins/android/lib/templates/activities_
+* Copy the folder _templates/CleanArchitecture_ in _${ANDROID_STUDIO_HOME}/plugins/android/lib/templates/other_
 * Restart Android Studio
-* Now you can create a new project: _File -> New -> New Project..._ and choose **Clean Architecture application**
+* Create a new project: _File -> New -> New Project..._ and choose **Add No Activity** (min API 19)
+* Then create the Clean Architecture app: _File -> New -> Activity ->_ and choose **Clean Architecture application**
 * Replace the _.gitignore_ file with the _root/.gitignore_ template file
-* Replace the _gradle.properties_ file with the _root/gradle.properties_ template file
 * Replace the _gradle/wrapper/gradle-wrapper.properties_ file with the _root/gradle-wrapper.properties_ template file
+* Replace the _app/proguard-rules.pro_ file with the _root/proguard-rules.pro_ template file
 * Edit the _app/build.gradle_ file and update the **com.android.support:appcompat-v7** dependency to the last version
-* Edit the _AndroidManifest.xml_ file and set the application theme to @**style/MyAppTheme**
 * Sync project
-* Rebuild project
+* Make project
 * Run it!
