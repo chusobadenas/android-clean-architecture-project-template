@@ -12,10 +12,10 @@ import ${packageName}.data.repository.remote.APIService;
 import ${packageName}.data.repository.UserDataRepository;
 import ${packageName}.domain.repository.UserRepository;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
+
+import javax.inject.Singleton;
 
 /**
  * Dagger module that provides objects which will live during the application lifecycle.
@@ -23,29 +23,18 @@ import dagger.Provides;
 @Module
 public class ApplicationModule {
 
-  private final AndroidApplication application;
-
-  /**
-   * Constructor
-   *
-   * @param application the application
-   */
-  public ApplicationModule(AndroidApplication application) {
-      this.application = application;
+  @ApplicationContext
+  @Provides
+  @Singleton
+  Context provideContext(AndroidApplication application) {
+      return application.getApplicationContext();
   }
 
   @Provides
   @Singleton
   APIService provideApiService() {
       return APIService.Creator.newAPIService();
-  }
-
-  @ApplicationContext
-  @Provides
-  @Singleton
-  Context provideApplicationContext() {
-      return application;
-  }
+  }  
 
   @Provides
   @Singleton

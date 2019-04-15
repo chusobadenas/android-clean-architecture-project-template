@@ -90,8 +90,6 @@
     <!-- COMMON -->
     <instantiate from="src/app_package/common/di/ApplicationContext.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/common/di/ApplicationContext.java"/>
-    <instantiate from="src/app_package/common/di/HasComponent.java.ftl"
-                   to="${escapeXmlAttribute(srcOut)}/common/di/HasComponent.java"/>
     <instantiate from="src/app_package/common/di/PerActivity.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/common/di/PerActivity.java"/>
 
@@ -99,8 +97,6 @@
                    to="${escapeXmlAttribute(srcOut)}/common/di/components/ActivityComponent.java"/>
     <instantiate from="src/app_package/common/di/components/ApplicationComponent.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/common/di/components/ApplicationComponent.java"/>
-    <instantiate from="src/app_package/common/di/components/MainComponent.java.ftl"
-                   to="${escapeXmlAttribute(srcOut)}/common/di/components/MainComponent.java"/>
     <instantiate from="src/app_package/common/di/modules/ActivityModule.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/common/di/modules/ActivityModule.java"/>
     <instantiate from="src/app_package/common/di/modules/ApplicationModule.java.ftl"
@@ -109,6 +105,10 @@
                    to="${escapeXmlAttribute(srcOut)}/common/di/modules/MainModule.java"/>
     <instantiate from="src/app_package/common/di/modules/MyGlideModule.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/common/di/modules/MyGlideModule.java"/>
+    <instantiate from="src/app_package/common/di/modules/ActivityBindingsModule.java.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/common/di/modules/ActivityBindingsModule.java"/>
+    <instantiate from="src/app_package/common/di/modules/FragmentBindingsModule.java.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/common/di/modules/FragmentBindingsModule.java"/>
 
     <instantiate from="src/app_package/common/exception/DefaultErrorBundle.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/common/exception/DefaultErrorBundle.java"/>
