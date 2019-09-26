@@ -3,7 +3,7 @@ package ${packageName}.presentation.base;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import ${packageName}.R;
 import ${packageName}.common.util.DialogFactory;
