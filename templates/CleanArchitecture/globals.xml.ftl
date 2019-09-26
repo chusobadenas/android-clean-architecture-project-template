@@ -7,18 +7,18 @@
     <global id="srcOut" value="${srcDir}/${slashedPackageName(packageName)}"/>
     <global id="unitTestOut" value="app/src/test/java/${slashedPackageName(packageName)}"/>
     <global id="resOut" value="${resDir}"/>
-    <global id="gradleWrapperVersion" value="5.3.1"/>
-    <global id="playServicesVersion" value="16.1.0"/>
-    <global id="supportLibraryVersion" value="28.0.0"/>
-    <global id="interceptorVersion" value="3.14.0"/>
-    <global id="retrofitVersion" value="2.5.0"/>
-    <global id="butterKnifeVersion" value="9.0.0"/>
-    <global id="rxJavaVersion" value="2.2.7"/>
+    <global id="gradleWrapperVersion" value="5.6.2"/>
+    <global id="playServicesVersion" value="17.0.0"/>
+    <global id="androidXVersion" value="1.1.0"/>
+    <global id="interceptorVersion" value="3.14.3"/>
+    <global id="retrofitVersion" value="2.6.1"/>
+    <global id="butterKnifeVersion" value="10.2.0"/>
+    <global id="rxJavaVersion" value="2.2.12"/>
     <global id="rxAndroidVersion" value="2.1.1"/>
     <global id="gsonVersion" value="2.8.5"/>
-    <global id="daggerVersion" value="2.21"/>
+    <global id="daggerVersion" value="2.24"/>
     <global id="timberVersion" value="4.7.1"/>
-    <global id="glideVersion" value="4.9.0"/>
+    <global id="glideVersion" value="4.10.0"/>
     <global id="easyMockVersion" value="3.5"/>
     <global id="mockitoVersion" value="1.10.19"/>
     <global id="powerMockVersion" value="1.6.6"/>

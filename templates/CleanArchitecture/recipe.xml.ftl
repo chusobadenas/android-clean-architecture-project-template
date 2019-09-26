@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <recipe>
     <!-- Dependencies -->
-    <dependency mavenUrl="com.android.support:appcompat-v7:${supportLibraryVersion}"/>
-    <dependency mavenUrl="com.android.support:animated-vector-drawable:${supportLibraryVersion}"/>
-    <dependency mavenUrl="com.android.support:cardview-v7:${supportLibraryVersion}"/>
-    <dependency mavenUrl="com.android.support:design:${supportLibraryVersion}"/>
-    <dependency mavenUrl="com.android.support:percent:${supportLibraryVersion}"/>
-    <dependency mavenUrl="com.android.support:recyclerview-v7:${supportLibraryVersion}"/>
-    <dependency mavenUrl="com.android.support:support-annotations:${supportLibraryVersion}"/>
-    <dependency mavenUrl="com.android.support:support-media-compat:${supportLibraryVersion}"/>
-    <dependency mavenUrl="com.android.support:support-v4:${supportLibraryVersion}"/>
+    <dependency mavenUrl="androidx.appcompat:appcompat:${androidXVersion}"/>
+    <dependency mavenUrl="androidx.vectordrawable:vectordrawable-animated:${androidXVersion}"/>
+    <dependency mavenUrl="androidx.recyclerview:recyclerview:1.0.0"/>
+    <dependency mavenUrl="androidx.cardview:cardview:1.0.0"/>
+    <dependency mavenUrl="androidx.annotation:annotation:${androidXVersion}"/>
+    <dependency mavenUrl="androidx.media:media:${androidXVersion}"/>
+    <dependency mavenUrl="androidx.legacy:legacy-support-v4:1.0.0"/>
+    <dependency mavenUrl="androidx.percentlayout:percentlayout:1.0.0"/>
+    <dependency mavenUrl="com.google.android.material:material:1.0.0"/>
     <dependency mavenUrl="com.github.bumptech.glide:glide:${glideVersion}"/>
     <dependency mavenUrl="com.google.android.gms:play-services-gcm:${playServicesVersion}"/>
     <dependency mavenUrl="com.google.code.gson:gson:${gsonVersion}"/>
@@ -32,6 +32,7 @@
     <dependency mavenUrl="org.robolectric:robolectric:${roboElectricVersion}" gradleConfiguration="testImplementation"/>
     <dependency mavenUrl="org.robolectric:shadows-support-v4:${roboElectricShadowsVersion}" gradleConfiguration="testImplementation"/>
     <dependency mavenUrl="com.google.auto.value:auto-value:${autoValueVersion}" gradleConfiguration="annotationProcessor"/>
+    <dependency mavenUrl="com.google.auto.value:auto-value-annotations:${autoValueVersion}" gradleConfiguration="api"/>
     <dependency mavenUrl="com.ryanharter.auto.value:auto-value-gson:${autoValueGsonVersion}" gradleConfiguration="annotationProcessor"/>
     <dependency mavenUrl="com.jakewharton:butterknife-compiler:${butterKnifeVersion}" gradleConfiguration="annotationProcessor"/>
     <dependency mavenUrl="com.google.dagger:dagger-android-processor:${daggerVersion}" gradleConfiguration="annotationProcessor"/>

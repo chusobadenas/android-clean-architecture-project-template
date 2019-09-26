@@ -1,8 +1,8 @@
 android {
-  compileSdkVersion 28
-  buildToolsVersion "28.0.3"
+  compileSdkVersion 29
+  buildToolsVersion "29.0.2"
   defaultConfig {
-    targetSdkVersion 28
+    targetSdkVersion 29
   }
   lintOptions {
     warning 'InvalidPackage'
