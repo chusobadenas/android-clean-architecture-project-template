@@ -26,11 +26,11 @@
     <dependency mavenUrl="io.reactivex.rxjava2:rxjava:${rxJavaVersion}"/>
     <dependency mavenUrl="org.easymock:easymock:${easyMockVersion}" gradleConfiguration="testImplementation"/>
     <dependency mavenUrl="org.mockito:mockito-core:${mockitoVersion}" gradleConfiguration="testImplementation"/>
-    <dependency mavenUrl="org.powermock:powermock-api-mockito:${powerMockVersion}" gradleConfiguration="testImplementation"/>
+    <dependency mavenUrl="org.powermock:powermock-api-mockito2:${powerMockVersion}" gradleConfiguration="testImplementation"/>
     <dependency mavenUrl="org.powermock:powermock-api-easymock:${powerMockVersion}" gradleConfiguration="testImplementation"/>
     <dependency mavenUrl="org.powermock:powermock-module-junit4:${powerMockVersion}" gradleConfiguration="testImplementation"/>
     <dependency mavenUrl="org.robolectric:robolectric:${roboElectricVersion}" gradleConfiguration="testImplementation"/>
-    <dependency mavenUrl="org.robolectric:shadows-support-v4:${roboElectricShadowsVersion}" gradleConfiguration="testImplementation"/>
+    <dependency mavenUrl="androidx.test:core:${androidXTestVersion}" gradleConfiguration="testImplementation"/>
     <dependency mavenUrl="com.google.auto.value:auto-value:${autoValueVersion}" gradleConfiguration="annotationProcessor"/>
     <dependency mavenUrl="com.google.auto.value:auto-value-annotations:${autoValueVersion}" gradleConfiguration="api"/>
     <dependency mavenUrl="com.ryanharter.auto.value:auto-value-gson:${autoValueGsonVersion}" gradleConfiguration="annotationProcessor"/>

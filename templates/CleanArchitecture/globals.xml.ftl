@@ -10,6 +10,7 @@
     <global id="gradleWrapperVersion" value="5.6.2"/>
     <global id="playServicesVersion" value="17.0.0"/>
     <global id="androidXVersion" value="1.1.0"/>
+    <global id="androidXTestVersion" value="1.2.0"/>
     <global id="interceptorVersion" value="3.14.3"/>
     <global id="retrofitVersion" value="2.6.1"/>
     <global id="butterKnifeVersion" value="10.2.0"/>
@@ -19,11 +20,10 @@
     <global id="daggerVersion" value="2.24"/>
     <global id="timberVersion" value="4.7.1"/>
     <global id="glideVersion" value="4.10.0"/>
-    <global id="easyMockVersion" value="3.5"/>
-    <global id="mockitoVersion" value="1.10.19"/>
-    <global id="powerMockVersion" value="1.6.6"/>
-    <global id="roboElectricVersion" value="3.5.1"/>
-    <global id="roboElectricShadowsVersion" value="3.4-rc2"/>
+    <global id="easyMockVersion" value="4.0.2"/>
+    <global id="mockitoVersion" value="3.0.0"/>
+    <global id="powerMockVersion" value="2.0.2"/>
+    <global id="roboElectricVersion" value="4.3"/>
     <global id="autoValueVersion" value="1.6.3rc1"/>
     <global id="autoValueGsonVersion" value="1.0.0"/>
     <global id="autoValueAnnotationsVersion" value="1.5"/>

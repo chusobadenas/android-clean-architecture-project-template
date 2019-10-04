@@ -10,7 +10,7 @@ import ${packageName}.AndroidApplicationTest;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(application = AndroidApplicationTest.class, sdk = 23)
+@Config(application = AndroidApplicationTest.class, sdk = 27)
 public class UIThreadTest {
 
   @Test
